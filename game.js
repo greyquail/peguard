@@ -1,7 +1,5 @@
 import Phaser from 'phaser';
-import GameScene from './js/gameScene.js';
-import Tower from './js/tower.js';
-import Enemy from './js/enemy.js';
+import GameScene from './gameScene.js';
 
 const config = {
     type: Phaser.AUTO,
@@ -12,11 +10,9 @@ const config = {
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 200 }
+            gravity: { y: 0 }
         }
     }
 };
 
 const game = new Phaser.Game(config);
-
-game.scene.start('GameScene');

@@ -22,6 +22,14 @@ class GameScene extends Phaser.Scene {
         this.input.on('pointerdown', (pointer) => {
             this.createTower(pointer.x, pointer.y);
         });
+
+        // Create an enemy every 2 seconds
+        this.time.addEvent({
+            delay: 2000,
+            callback: this.createEnemy,
+            callbackScope: this,
+            loop: true
+        });
     }
 
     update(time, delta) {
@@ -37,11 +45,13 @@ class GameScene extends Phaser.Scene {
     createTower(x, y) {
         const tower = new Tower(this, x, y);
         this.towers.push(tower);
+        this.add.existing(tower);
     }
 
     createEnemy() {
         const enemy = new Enemy(this);
         this.enemies.push(enemy);
+        this.add.existing(enemy);
     }
 }
 
